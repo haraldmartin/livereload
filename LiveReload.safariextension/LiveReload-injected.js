@@ -107,8 +107,9 @@ function performLiveReload(data) {
 }
 
 // Safari
-
 safari.self.addEventListener("message", function(event) {
+    document.documentElement.className += ' -livereload-enabled';
+
     if (event.name == 'LiveReload') {
         performLiveReload(event.message)
     }
