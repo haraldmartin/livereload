@@ -108,9 +108,12 @@ function performLiveReload(data) {
 
 // Safari
 safari.self.addEventListener("message", function(event) {
-    document.documentElement.className += ' -livereload-enabled';
-
     if (event.name == 'LiveReload') {
         performLiveReload(event.message)
+        
+        var doc = document.documentElement,
+            klass = ' -livereload-enabled';
+        if (doc.className.indexOf(klass) === -1)
+          doc.className += klass;
     }
 }, false);
